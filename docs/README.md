@@ -1,313 +1,365 @@
-# ☕ CafeHub 프로젝트 발표 자료
+# ☕ CafeHub - 카페 예약 모바일 앱
 
-> 카페 예약 모바일 앱 | 기획 → 설계 → 발표 완성 패키지
+> **가고 싶은 카페를 찾아서 자리를 미리 예약하는 모바일 앱**
+
+[![Dart](https://img.shields.io/badge/Dart-3.9.2-blue)](https://dart.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-3.35.3-blue)](https://flutter.dev)
+[![Firebase](https://img.shields.io/badge/Firebase-Latest-yellow)](https://firebase.google.com)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
-## 📦 포함된 3가지 자료
+## 📋 목차
 
-### 1️⃣ **WBS 대시보드** (`01-cafehub-wbs-dashboard.html`)
-**목적:** GitHub Pages에 배포하여 진행 상황을 실시간으로 공개
+- [프로젝트 개요](#-프로젝트-개요)
+- [주요 기능](#-주요-기능)
+- [기술 스택](#-기술-스택)
+- [설치 및 실행](#-설치-및-실행)
+- [프로젝트 구조](#-프로젝트-구조)
+- [개발 문서](#-개발-문서)
+- [팀 정보](#-팀-정보)
 
-**특징:**
-- ☕ CafeHub 브랜딩 (커피색 톤)
-- 📊 작업 분해 구조 (WBS)
-- 📈 42% 진행률 시각화
-- 📅 11-14주 주간 타임라인
-- 🏗️ Mermaid 아키텍처 다이어그램
+---
 
-**바로 사용:**
+## 🎯 프로젝트 개요
+
+### 개발 배경
+
+일상적으로 많은 사람들이 **카페 방문 시 다음과 같은 문제**를 경험합니다:
+
+1. **카페 정보 부족** - 위치, 분위기, 시설 정보가 산재
+2. **자리 확보 어려움** - 도착했는데 자리가 없는 경우 빈번
+3. **메뉴 고민** - 매번 반복되는 메뉴 선택의 번거로움
+
+### 솔루션
+
+**CafeHub**는 이 모든 문제를 해결하는 통합 솔루션입니다:
+
+- 🔍 **검색**: 위치/분위기/시설로 카페 필터링
+- 📅 **예약**: 날짜/시간/인원 선택으로 즉시 예약
+- ⏰ **관리**: 예약 내역 한눈에 관리
+- ⭐ **리뷰**: 방문 경험 공유 및 평가
+
+### 기대 효과
+
+✅ 시간 낭비 감소 (자리 확보 시간 단축)  
+✅ 사용자 만족도 향상 (확실한 자리 보장)  
+✅ 카페 정보 통합 관리 (한 앱에서 모두 해결)  
+
+---
+
+## 🌟 주요 기능
+
+### 1️⃣ 회원 관리
+- ✅ JWT 기반 안전한 인증
+- ✅ 회원가입/로그인
+- ✅ 자동 로그인 (토큰 기반)
+
+### 2️⃣ 카페 검색
+- ✅ 실시간 검색 기능
+- ✅ 5가지 카테고리 필터
+  - 📍 지역별
+  - 🎨 분위기 (조용함/활기찬)
+  - ⚙️ 시설 (와이파이/콘센트)
+  - 👥 예약 가능 여부
+  - 📅 영업 시간
+
+### 3️⃣ 예약 시스템
+- ✅ DatePicker로 날짜 선택 (오늘~30일)
+- ✅ 시간 선택 (10:00~19:00, 30분 단위)
+- ✅ 인원 선택 (1~10명)
+- ✅ 예약 확정 알림
+
+### 4️⃣ 예약 관리
+- ✅ 예약 내역 조회
+- ✅ 예약 상태 표시
+  - 예약 대기 중
+  - 예약 확정
+  - 방문 완료
+- ✅ 예약 취소 기능
+
+### 5️⃣ 리뷰 시스템
+- ✅ 별점 선택 (1~5점)
+- ✅ 텍스트 리뷰 작성 (최대 300자)
+- ✅ 리뷰 조회
+- ✅ 카페별 평점 계산
+
+---
+
+## 🛠️ 기술 스택
+
+### Frontend
+```
+Language:   Dart 3.9.2
+Framework:  Flutter 3.35.3
+State Mgmt: Provider
+HTTP:       Dio
+Platform:   Android / iOS
+```
+
+### Backend
+```
+Framework:  Firebase (Firestore + Auth)
+Hosting:    Cloud Firestore
+Auth:       Firebase Authentication
+```
+
+### Database
+```
+Primary:    Cloud Firestore
+Real-time:  Yes
+Sync:       Auto Sync
+```
+
+### Architecture
+```
+Pattern:    4-Layer Layered Architecture
+├── Presentation (Screens, Widgets)
+├── Application (State Management, ViewModel)
+├── Domain (Business Logic, Use Cases)
+└── Data (Repository, APIs)
+```
+
+자세한 내용은 [ARCHITECTURE.md](docs/ARCHITECTURE.md) 참조
+
+---
+
+## 📦 설치 및 실행
+
+### 요구사항
+- **Flutter SDK**: 3.35.3 이상
+- **Dart SDK**: 3.9.2 이상
+- **Android Studio** 또는 **Xcode** (플랫폼별)
+- **Git**
+
+### 설치 단계
+
+#### 1. 저장소 클론
 ```bash
-# 브라우저에서 파일 더블클릭
-# 또는 우클릭 > Open with > Chrome/Firefox
+git clone https://github.com/ayeong333-boop/cafehub-app.git
+cd cafehub-app
 ```
 
----
-
-### 2️⃣ **중간 발표자료** (`02-cafehub-presentation.md`)
-**목적:** 비전과 문제 정의를 임팩트있게 전달하는 7분 발표
-
-**구성:**
-- 📱 타이틀 슬라이드
-- 🎯 문제 정의 (3가지 어려움)
-- 👥 타겟 사용자 (3가지 페르소나)
-- ✨ 비전 메시지
-- 📖 사용자 시나리오
-- 🛠️ 기술 스택
-- 📊 진행 상황 및 일정
-- ⚠️ 위험 관리
-- 🎬 마무리
-
-**Marp 발표하기:**
+#### 2. 의존성 설치
 ```bash
-# VSCode에서 Marp 확장 설치
-# 파일 우클릭 > Marp: Toggle Presentation
-# F5로 슬라이드쇼 시작
-
-# 또는 https://marp.app 에서 온라인 변환
+flutter pub get
 ```
 
----
-
-### 3️⃣ **아키텍처 설계** (`03-cafehub-architecture.html`)
-**목적:** 기술 구현을 Mermaid 다이어그램으로 명확하게 설명
-
-**포함:**
-- 🏗️ Layered + MVVM 아키텍처
-- 📱 화면 네비게이션 흐름
-- 🔧 ViewModel 상태 관리
-- 🔄 데이터 흐름 (시퀀스 다이어그램)
-- 💾 데이터 모델 (ERD)
-- 📂 실제 프로젝트 디렉토리 구조
-- 🛠️ 기술 스택 선택 근거
-- 🔐 보안 및 성능 최적화
-
----
-
-## 🎬 발표 순서 (12분 기준)
-
-```
-1️⃣ WBS 대시보드 오픈 (30초)
-   "프로젝트 진행 현황입니다. 42% 완료, 11-14주 일정"
-
-2️⃣ 발표자료 슬라이드 1-12번 (7분)
-   📌 슬라이드 4 (한 줄 비전)에서 가장 크게!
-   📌 슬라이드 5 (사용자 시나리오)에서 손짓 첨가
-
-3️⃣ 질문 받기 (3-4분)
-   - 기술 질문: 아키텍처 설계 보여주기
-   - 기능 질문: WBS 대시보드로 설명
-   - 일정 질문: 타임라인으로 답변
-
-✅ 준비물 확인
-   - 마이크/스피커 테스트
-   - 화면 공유 연습
-   - 슬라이드 통과 1회 리허설
-```
-
----
-
-## 💻 빠른 시작 (5분)
-
-### Step 1: 파일 확인
+#### 3. Firebase 설정
 ```bash
-outputs/ 폴더에 3개 파일 확인:
-✅ 01-cafehub-wbs-dashboard.html
-✅ 02-cafehub-presentation.md
-✅ 03-cafehub-architecture.html
+# google-services.json (Android)
+# GoogleService-Info.plist (iOS)
+# 를 각각 android/app, ios/Runner 폴더에 배치
 ```
 
-### Step 2: GitHub Pages 배포 (선택)
+자세한 설정은 [SETUP.md](docs/SETUP.md) 참조
+
+#### 4. 앱 실행
 ```bash
-# 저장소의 /docs 폴더에 파일 복사
-mkdir docs
-cp 01-cafehub-wbs-dashboard.html docs/index.html
-cp 03-cafehub-architecture.html docs/architecture.html
+# 디바이스 확인
+flutter devices
 
-# GitHub 설정
-Settings > Pages > Branch: main, Folder: /docs
+# 앱 실행
+flutter run
 
-# 완료!
-# https://[username].github.io/[repo] 에서 확인
+# Release 빌드
+flutter run --release
 ```
 
-### Step 3: 로컬 확인 (지금 바로)
+---
+
+## 📁 프로젝트 구조
+
+```
+cafehub-app/
+├── docs/                          # 문서 폴더
+│   ├── README.md                  # 프로젝트 소개
+│   ├── REQUIREMENTS.md            # 요구사항 정의서
+│   ├── ARCHITECTURE.md            # 아키텍처 설명
+│   ├── SETUP.md                   # 개발 환경 설정
+│   ├── DEPLOY.md                  # 배포 가이드
+│   ├── TESTING.md                 # 테스트 전략
+│   ├── AGENTS.md                  # AI 에이전트 정책
+│   ├── adr/                       # Architecture Decision Records
+│   │   ├── ADR-0001-flutter-choice.md
+│   │   ├── ADR-0002-firebase-choice.md
+│   │   └── ADR-0003-layered-architecture.md
+│   ├── images/                    # 앱 스크린샷
+│   │   ├── login_screen.png
+│   │   ├── home_screen.png
+│   │   ├── search_screen.png
+│   │   ├── reservation_screen.png
+│   │   └── review_screen.png
+│   ├── presentation.html          # 최종 발표자료
+│   └── WBS.md                     # 프로젝트 계획
+├── lib/
+│   ├── main.dart                  # 앱 진입점
+│   ├── presentation/              # UI 계층
+│   │   ├── screens/
+│   │   ├── widgets/
+│   │   └── providers/
+│   ├── application/               # 애플리케이션 계층
+│   │   └── providers/
+│   ├── domain/                    # 도메인 계층
+│   │   ├── entities/
+│   │   ├── repositories/
+│   │   └── usecases/
+│   └── data/                      # 데이터 계층
+│       ├── datasources/
+│       ├── models/
+│       └── repositories/
+├── test/                          # 단위/통합 테스트
+├── pubspec.yaml                   # 프로젝트 설정 및 의존성
+├── .gitignore
+├── LICENSE
+└── README.md                      # 이 파일
+```
+
+---
+
+## 📚 개발 문서
+
+| 문서 | 설명 | 링크 |
+|------|------|------|
+| **요구사항** | 프로젝트 요구사항 명세 | [REQUIREMENTS.md](docs/REQUIREMENTS.md) |
+| **아키텍처** | 시스템 설계 및 구조 | [ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| **ADR** | 아키텍처 결정 기록 | [adr/](docs/adr/) |
+| **설정** | 개발 환경 구성 | [SETUP.md](docs/SETUP.md) |
+| **배포** | 배포 방법 및 가이드 | [DEPLOY.md](docs/DEPLOY.md) |
+| **테스트** | 테스트 전략 및 방법 | [TESTING.md](docs/TESTING.md) |
+| **일정** | WBS 및 개발 일정 | [WBS.md](docs/WBS.md) |
+| **정책** | AI 에이전트 정책 | [AGENTS.md](AGENTS.md) |
+
+---
+
+## 🎨 주요 화면
+
+### 로그인
+- 안전한 JWT 기반 인증
+- 자동 로그인 지원
+
+### 홈
+- 인기 카페 가로 스크롤
+- 최근 리뷰 최대 3개 표시
+- 빠른 접근 메뉴
+
+### 검색
+- 실시간 검색
+- 5개 카테고리 필터
+- 결과 수 표시
+
+### 예약
+- DatePicker 기반 날짜 선택
+- 시간/인원 선택
+- 예약 확정
+
+### 리뷰
+- 별점 선택 (1~5)
+- 텍스트 리뷰 작성
+- 리뷰 조회 및 삭제
+
+---
+
+## 🔄 개발 워크플로우
+
+### 브랜치 전략
+```
+main (배포용)
+  ├── develop (개발용)
+  │   ├── feature/auth
+  │   ├── feature/search
+  │   ├── feature/reservation
+  │   └── feature/review
+  └── hotfix/bug-fix
+```
+
+### Commit Convention
+```
+feat:     새로운 기능
+fix:      버그 수정
+docs:     문서 수정
+style:    코드 스타일 변경
+refactor: 코드 리팩토링
+test:     테스트 추가/수정
+chore:    설정 파일 변경
+```
+
+---
+
+## 🧪 테스트
+
 ```bash
-# 파일 더블클릭
-# 또는 "Open with Browser"
-# 모든 기능이 즉시 렌더링됨
+# 모든 테스트 실행
+flutter test
+
+# 커버리지 생성
+flutter test --coverage
 ```
 
----
-
-## 📝 커스터마이징 체크리스트
-
-### WBS 대시보드 수정
-- [x] 프로젝트명: CafeHub ✓
-- [x] 진행률: 42% ✓
-- [ ] 팀원 이름 변경 (필요시)
-- [ ] 마일스톤 날짜 확인
-- [ ] 기술 스택 업데이트
-
-### 발표자료 수정
-- [x] 슬라이드 구성: 12개 ✓
-- [ ] 발표자 이름 입력
-- [ ] 발표 날짜 변경
-- [ ] 내용 리뷰 (특히 슬라이드 4, 5번)
-- [ ] 사내 용어/수치 확인
-
-### 아키텍처 문서 수정
-- [x] 프로젝트명: CafeHub ✓
-- [x] 기술: Flutter + Firebase ✓
-- [ ] 추가 기술 있으면 업데이트
-- [ ] 회사 정책 맞게 조정
-- [ ] 팀 규모 확인
+자세한 테스트 방법은 [TESTING.md](docs/TESTING.md) 참조
 
 ---
 
-## 🎨 디자인 요소
+## 🚀 배포
 
-### 색상 팔레트
-```
-☕ 커피색: #8B4513 (Primary)
-🟤 초콜릿: #D2691E (Secondary)
-🟠 오렌지: #FF8C00 (Accent)
-🔴 토마토: #FF6347 (Warning)
-🎀 핑크: #FFB6C1 (Highlight)
-🍊 연어색: #FFA07A (Support)
+### Android
+```bash
+flutter build apk --release
 ```
 
-### 폰트
-- 제목: 굵고 큼 (3em)
-- 본문: 읽기 쉬운 산세리프
-- 코드: Monospace
-
-### 레이아웃
-- 데스크톱: 최적화 ✓
-- 태블릿: 반응형 ✓
-- 모바일: 확대해서 읽기 ✓
-
----
-
-## 🚀 발표 팁
-
-### ✅ 해야 할 것
-```
-1. 슬라이드 최소 1번은 통으로 읽기
-2. 타이머 재고 7분 정확히 맞추기
-3. 슬라이드 4번 (비전)은 크게 읽기
-4. 슬라이드 5번 (시나리오)은 손짓 첨가
-5. 질문 예상하고 미리 답변 준비
+### iOS
+```bash
+flutter build ios --release
 ```
 
-### ❌ 하지 말아야 할 것
-```
-1. 슬라이드 읽기만 하기 (→ 자신의 말로 설명)
-2. 너무 빨리 진행 (→ 관객이 못 따라감)
-3. 너무 많은 디테일 (→ 핵심만!)
-4. 비전 없이 기능만 설명 (→ "왜?"부터)
-5. 질문에 말 많이 하기 (→ 명확하고 짧게)
-```
-
-### 🎯 임팩트 포인트
-| 슬라이드 | 포인트 |
-|---------|--------|
-| 1 | 큰 목소리로 프로젝트명 발표 |
-| 4 | **"예약 가능한 카페를 찾고, 시간을 낭비 없이 자리를 확보한다"** 크게! |
-| 5 | 손짓 첨가, 실제 사용 이미지 |
-| 6 | 기술 선택 이유 명확히 |
-| 9 | 성공 기준 자신감있게 |
+배포 가이드는 [DEPLOY.md](docs/DEPLOY.md) 참조
 
 ---
 
-## 📚 추가 자료
+## 🤝 기여 방법
 
-### Marp 사용법
-- **공식 문서:** https://marp.app
-- **온라인 에디터:** https://marp.app/editor
-- **PDF 변환:** `npx @marp-team/marp-cli [file].md -o output.pdf`
-
-### Mermaid 다이어그램
-- **에디터:** https://mermaid.live
-- **문서:** https://mermaid.js.org
-
-### GitHub Pages
-- **설정:** Settings > Pages
-- **배포:** 자동 (main branch push)
-- **URL:** `https://[username].github.io/[repo]`
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
 ---
 
-## ❓ FAQ
+## 📝 라이선스
 
-**Q: 발표 몇 분을 할애해야 하나요?**
-A: 7분 ±10% (6-8분). 질문 포함 12분 총.
-
-**Q: 모든 슬라이드를 다 써야 하나요?**
-A: 아니요. 1-12번 슬라이드가 7분입니다. 필요하면 조정.
-
-**Q: 아키텍처는 꼭 설명해야 하나요?**
-A: 아니요. 기술 질문 나올 때 참고용. 필수는 아님.
-
-**Q: 파일 수정은 어떻게?**
-A: 
-- HTML: 메모장으로 직접 편집
-- Markdown: VSCode로 편집
-- 수정 후 파일 저장하면 자동 반영
-
-**Q: GitHub Pages 배포가 안 되면?**
-A: 
-1. Settings > Pages 확인
-2. Branch를 main으로 설정
-3. Folder를 /docs로 설정
-4. 5분 기다린 후 다시 확인
-
-**Q: 화면 공유시 어떤 파일을 띄워야 하나요?**
-A: 
-1. 메인: 02-cafehub-presentation.md (슬라이드)
-2. 참고: 01-cafehub-wbs-dashboard.html (WBS)
-3. 질문시: 03-cafehub-architecture.html (아키텍처)
-
-**Q: 프로젝트명이 다르면?**
-A: HTML/Markdown의 "CafeHub" 부분을 모두 찾아 바꾸기 (Ctrl+H)
+이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일 참조
 
 ---
 
-## 📞 문제 해결
+## 👥 팀 정보
 
-### 브라우저에서 HTML이 안 열려요
-→ 다른 브라우저 시도 (Chrome, Firefox, Safari)
+**Fresh Code Team** - CafeHub 프로젝트 개발팀
 
-### 슬라이드 렌더링이 안 돼요
-→ Marp VSCode 확장 설치 (`Marp for VS Code`)
-
-### Mermaid 다이어그램이 안 보여요
-→ 인터넷 연결 확인 (cdn.jsdelivr.net 필요)
-
-### 파일 수정 후 변경이 안 보여요
-→ 브라우저 새로고침 (Ctrl+R 또는 Cmd+R)
+| 이름 | 역할 | GitHub |
+|------|------|--------|
+| 성아영 | Frontend Developer | [@ayeong333-boop](https://github.com/ayeong333-boop) |
+| - | - | - |
+| - | - | - |
 
 ---
 
-## 📋 최종 체크리스트
+## 📞 문의
 
-발표 전 필수 확인:
-- [ ] 3개 파일 모두 확인함
-- [ ] 슬라이드 1번부터 12번까지 통으로 읽음
-- [ ] 타이머로 7분 측정했음
-- [ ] 화면 공유 테스트했음
-- [ ] 마이크/스피커 테스트했음
-- [ ] GitHub Pages에 배포했음 (선택)
-- [ ] 예상 질문 3가지 답변 준비했음
+- 🐛 버그 리포트: [Issues](https://github.com/ayeong333-boop/cafehub-app/issues)
+- 💬 기능 요청: [Discussions](https://github.com/ayeong333-boop/cafehub-app/discussions)
+- 📧 이메일: ayeong333@example.com
 
 ---
 
-## 🎊 축하합니다!
+## 🙏 감사의 말
 
-이제 당신은:
-- ✅ 완성된 발표자료가 있습니다
-- ✅ GitHub Pages 대시보드를 공개할 수 있습니다
-- ✅ 기술 설계를 명확하게 설명할 수 있습니다
-
-**지금 바로 시작하세요!**
-
-```
-1단계: 브라우저에서 파일 열기 (30초)
-2단계: 슬라이드 읽어보기 (7분)
-3단계: 타이머로 시간 재기 (7분)
-4단계: 2-3번 반복 연습 (20분)
-
-✨ 준비 완료!
-```
+- Google Gemini API
+- Firebase Platform
+- Flutter Community
+- 모든 기여자들
 
 ---
 
-**작성자:** Claude (AI)  
-**프로젝트:** CafeHub - 카페 예약 모바일 앱  
-**버전:** 1.0  
-**마지막 업데이트:** 2024  
-**라이선스:** CC0 (자유롭게 수정 및 배포 가능)
-
----
-
-행운을 빕니다! ☕🚀
+**마지막 업데이트**: 2026-06-22  
+**프로젝트 상태**: 진행 중 🔄
