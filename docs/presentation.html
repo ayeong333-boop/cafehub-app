@@ -4,436 +4,210 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CafeHub - 최종 발표</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
+
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
-        .reveal pre { width: 100%; font-size: 0.55em; }
-        .reveal table { margin: 20px auto; font-size: 0.8em; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+        }
+
+        .reveal pre {
+            width: 100%;
+            font-size: 0.6em;
+        }
+
+        .reveal table {
+            margin: 20px auto;
+            font-size: 0.8em;
+        }
+
         .highlight { color: #ff6b6b; font-weight: bold; }
         .success { color: #51cf66; }
         .coffee { color: #d4a574; }
-        .section-title { color: #4ecdc4; font-size: 1.2em; }
+
+        /* 🔥 발표 안정화 핵심 */
+        .reveal section img,
+        .reveal section video,
+        .reveal section iframe {
+            max-width: 85%;
+            max-height: 500px;
+            margin-top: 20px;
+        }
+
     </style>
 </head>
+
 <body>
-    <div class="reveal">
-        <div class="slides">
 
-            <!-- Slide 1: 타이틀 -->
-            <section>
-                <h1>🏢 CafeHub</h1>
-                <h3>카페 예약 모바일 앱</h3>
-                <p style="color: #ffd93d; font-size: 1.3em;">
-                    가고 싶은 카페를 찾아서 자리를 미리 예약하는 모바일 앱
-                </p>
-                <aside class="notes">
-                    1분: 프로젝트 소개 및 한 줄 설명
-                </aside>
-            </section>
+<div class="reveal">
+<div class="slides">
 
-            <!-- Slide 2: 비전 -->
-            <section>
-                <h2>📍 비전</h2>
-                <h3 style="color: #4ecdc4;">"일상 속 카페 경험을 더 편하게"</h3>
-                <ul style="margin-top: 40px;">
-                    <li>👥 대상: 직장인, 학생, 프리랜서</li>
-                    <li>📱 도전: 카페 찾기 → 도착 → 자리 없음</li>
-                    <li>✅ 해결: 미리 검색하고 예약하기</li>
-                </ul>
-                <aside class="notes">
-                    30초: 프로젝트의 비전과 타겟 고객 설명
-                </aside>
-            </section>
+<!-- 1 -->
+<section>
+    <h1>🏢 CafeHub</h1>
+    <h3>카페 예약 모바일 앱</h3>
+    <p style="color:#ffd93d;">
+        카페 탐색부터 예약까지 한 번에 해결하는 서비스
+    </p>
+</section>
 
-            <!-- Slide 3: 문제 정의 -->
-            <section>
-                <h2>❌ 문제 정의</h2>
-                <h3>"카페 가는 길이 너무 오래 걸려요"</h3>
-                <ul style="margin-top: 50px; font-size: 1.1em;">
-                    <li>📱 카페 정보가 흩어져 있음</li>
-                    <li>⏰ 자리 확보하는 데 시간 낭비</li>
-                    <li>😤 예약 시스템이 없음</li>
-                    <li>🚫 방문 후 자리 부족 경험</li>
-                </ul>
-                <aside class="notes">
-                    1분: 문제 정의 - 공감대 형성
-                </aside>
-            </section>
+<!-- 2 -->
+<section>
+    <h2>📍 비전</h2>
+    <h3>"카페 경험을 더 빠르고 정확하게"</h3>
+    <ul>
+        <li>직장인 / 학생 / 프리랜서 대상</li>
+        <li>자리 부족 문제 해결</li>
+        <li>예약 중심 서비스</li>
+    </ul>
+</section>
 
-            <!-- Slide 4: 가치 제안 -->
-            <section>
-                <h2>✅ 가치 제안</h2>
-                <h3 style="color: #51cf66;">"30초 안에 카페를 예약한다"</h3>
-                <ol style="margin-top: 50px; font-size: 1.15em; line-height: 2;">
-                    <li><span class="highlight">검색</span>: 위치/분위기/시설로 필터링</li>
-                    <li><span class="highlight">예약</span>: 날짜/시간/인원 선택</li>
-                    <li><span class="highlight">확인</span>: 예약 내역 관리</li>
-                    <li><span class="highlight">리뷰</span>: 경험 공유</li>
-                </ol>
-                <aside class="notes">
-                    30초: 해결책과 핵심 가치 제시
-                </aside>
-            </section>
+<!-- 3 -->
+<section>
+    <h2>❌ 문제 정의</h2>
+    <ul>
+        <li>카페 정보 분산</li>
+        <li>자리 없음으로 인한 시간 낭비</li>
+        <li>예약 시스템 부족</li>
+    </ul>
+</section>
 
-            <!-- Slide 5: WBS & 기술 스택 -->
-            <section>
-                <h2>📋 프로젝트 계획</h2>
-                <h3 style="color: #4ecdc4;">WBS & 기술 스택</h3>
-                <table style="margin-top: 30px; font-size: 0.9em;">
-                    <tr style="color: #ffd93d;">
-                        <td><strong>주차</strong></td>
-                        <td><strong>목표</strong></td>
-                        <td><strong>산출물</strong></td>
-                    </tr>
-                    <tr>
-                        <td>10주</td>
-                        <td>기획</td>
-                        <td>.planning/*</td>
-                    </tr>
-                    <tr>
-                        <td>11주</td>
-                        <td>환경설정</td>
-                        <td>main.dart</td>
-                    </tr>
-                    <tr>
-                        <td>12-13주</td>
-                        <td>기능개발</td>
-                        <td>앱 완성</td>
-                    </tr>
-                    <tr>
-                        <td>14주</td>
-                        <td>최종배포</td>
-                        <td>발표</td>
-                    </tr>
-                </table>
-                <aside class="notes">
-                    1분: 프로젝트 일정 및 기술 스택 설명
-                </aside>
-            </section>
+<!-- 4 -->
+<section>
+    <h2>✅ 해결</h2>
+    <h3 style="color:#51cf66;">30초 안에 예약 완료</h3>
+    <ol>
+        <li>검색</li>
+        <li>예약</li>
+        <li>확인</li>
+        <li>리뷰</li>
+    </ol>
+</section>
 
-            <!-- Slide 6: 기술 스택 -->
-            <section>
-                <h2>🛠️ 기술 스택</h2>
-                <div style="text-align: left; margin-top: 50px; font-size: 1.2em; line-height: 2.5;">
-                    <div><span class="coffee">Framework:</span> <strong>Flutter 3.35.3</strong></div>
-                    <div><span class="coffee">Backend:</span> <strong>Firebase (Firestore + Auth)</strong></div>
-                    <div><span class="coffee">Maps:</span> <strong>Google Maps API</strong></div>
-                    <div><span class="coffee">State Management:</span> <strong>Provider</strong></div>
-                    <div><span class="coffee">Language:</span> <strong>Dart 3.9.2</strong></div>
-                </div>
-                <aside class="notes">
-                    1분: 기술 스택 설명 및 선택 이유 (ADR 연계)
-                </aside>
-            </section>
+<!-- 5 -->
+<section>
+    <h2>📋 WBS</h2>
+    <table>
+        <tr><th>주차</th><th>내용</th></tr>
+        <tr><td>10주</td><td>기획</td></tr>
+        <tr><td>11주</td><td>환경설정</td></tr>
+        <tr><td>12~13주</td><td>개발</td></tr>
+        <tr><td>14주</td><td>배포</td></tr>
+    </table>
+</section>
 
-            <!-- Slide 7: 아키텍처 개요 -->
-            <section>
-                <h2>🏗️ 아키텍처</h2>
-                <h3 style="color: #4ecdc4;">4계층 Layered Architecture</h3>
-                <pre style="margin-top: 40px; background: #0f3460; padding: 20px; border-radius: 8px;"><code>┌─────────────────────────────────┐
-│   Presentation (UI)             │
-├─────────────────────────────────┤
-│   Application (ViewModel)       │
-├─────────────────────────────────┤
-│   Domain (Business Logic)       │
-├─────────────────────────────────┤
-│   Data (Repository)             │
-└─────────────────────────────────┘</code></pre>
-                <aside class="notes">
-                    1분: 아키텍처 설명 - 각 계층의 책임
-                </aside>
-            </section>
+<!-- 6 -->
+<section>
+    <h2>🛠 기술 스택</h2>
+    <p>Flutter / Firebase / Provider / Google Maps</p>
+</section>
 
-            <!-- Slide 8: 구현 결과 -->
-            <section>
-                <h2>📱 구현 결과</h2>
-                <h3 style="color: #51cf66;">5개 탭 + 완벽한 사용자 흐름</h3>
-                <ol style="margin-top: 40px; font-size: 1.1em; line-height: 2;">
-                    <li><strong>로그인</strong> - 이름 입력 인증</li>
-                    <li><strong>홈</strong> - 인기 카페 + 최근 리뷰</li>
-                    <li><strong>검색</strong> - 실시간 검색 + 5개 카테고리</li>
-                    <li><strong>예약</strong> - DatePicker + 시간/인원 선택</li>
-                    <li><strong>리뷰</strong> - 별점 선택 + 텍스트 작성</li>
-                </ol>
-                <aside class="notes">
-                    1분: 구현된 전체 기능 요약
-                </aside>
-            </section>
+<!-- 7 -->
+<section>
+    <h2>🏗 아키텍처</h2>
 
-            <!-- Slide 9: 기능 1 - 로그인 -->
-            <section>
-                <h2>🔐 기능 1: 로그인</h2>
-                <div style="text-align: left; margin-top: 40px; font-size: 1.1em; line-height: 2;">
-                    <div><span class="success">✅</span> 이름 입력 (필수)</div>
-                    <div><span class="success">✅</span> 비밀번호 UI (토글)</div>
-                    <div><span class="success">✅</span> 유효성 검사 (스낵바)</div>
-                    <div><span class="success">✅</span> 로그아웃 (홈 화면 우상단)</div>
-                </div>
-                <pre style="margin-top: 40px; font-size: 0.7em;"><code>// Provider로 로그인 상태 관리
-appState.login(username)
-appState.logout()</code></pre>
-                <aside class="notes">
-                    30초: 로그인 기능 상세 설명
-                </aside>
-            </section>
+<pre>
+UI (Presentation)
+   ↓
+Provider (State)
+   ↓
+Application (Logic)
+   ↓
+Domain (Model)
+   ↓
+Data (Firebase)
+</pre>
 
-            <!-- Slide 10: 기능 2 - 홈 & 검색 -->
-            <section>
-                <h2>🏠 기능 2: 홈 & 검색</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #ffd93d;">홈 화면</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 인기 카페 가로 스크롤<br>
-                        • 최근 리뷰 최대 3개<br>
-                        • 탭 → 카페 상세화면
-                    </div>
-                    <h4 style="color: #ffd93d; margin-top: 20px;">검색 화면</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 실시간 검색<br>
-                        • 5개 카테고리 필터<br>
-                        • 결과 수 표시
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 홈과 검색 기능 상세 설명
-                </aside>
-            </section>
+</section>
 
-            <!-- Slide 11: 기능 3 - 예약 -->
-            <section>
-                <h2>📅 기능 3: 예약 시스템</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #4ecdc4;">예약 선택</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • DatePicker (오늘~30일)<br>
-                        • 시간 드롭다운 (10:00~19:00)<br>
-                        • 인원 +/- 버튼 (1~10명)
-                    </div>
-                    <h4 style="color: #4ecdc4; margin-top: 20px;">예약 관리</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 예약 목록 카드<br>
-                        • 상태 배지 (예약완료)<br>
-                        • 예약 취소 기능
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 예약 시스템 상세 설명
-                </aside>
-            </section>
+<!-- 8 -->
+<section>
+    <h2>📱 데모 영상</h2>
 
-            <!-- Slide 12: 기능 4 - 리뷰 -->
-            <section>
-                <h2>⭐ 기능 4: 리뷰</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #51cf66;">리뷰 작성</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 카페 선택 드롭다운<br>
-                        • 별점 선택 (1~5)<br>
-                        • 텍스트 입력 (최대 300자)
-                    </div>
-                    <h4 style="color: #51cf66; margin-top: 20px;">리뷰 조회</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 전체 리뷰 목록<br>
-                        • 카페별 평점<br>
-                        • 작성자 및 날짜
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 리뷰 기능 상세 설명
-                </aside>
-            </section>
+    <!-- 🔥 여기 영상 넣으면 됨 -->
+    <video controls>
+        <source src="videos/demo.mp4" type="video/mp4">
+    </video>
 
-            <!-- Slide 13: ADR-0001 -->
-            <section>
-                <h2>🎯 ADR-0001: Flutter 선택</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ iOS + Android 동시 개발<br>
-                    ✅ 단일 코드베이스 (95% 공유)<br>
-                    ✅ 빠른 프로토타입 (Hot Reload)
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 30px;">대안 검토</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ❌ React Native: 성능 낮음<br>
-                    ❌ 네이티브: 6주 내 불가능
-                </div>
-                <aside class="notes">
-                    1분: ADR-0001 설명 (Q&A 준비)
-                </aside>
-            </section>
+    <!-- 또는 이미지 -->
+    <!-- <img src="images/demo.png"> -->
+</section>
 
-            <!-- Slide 14: ADR-0002 -->
-            <section>
-                <h2>☁️ ADR-0002: Firebase 선택</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 인증 즉시 구현 가능<br>
-                    ✅ Firestore 실시간 동기화<br>
-                    ✅ 무료 범위 내 충분
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 30px;">대안 검토</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ❌ AWS: 설정 복잡<br>
-                    ❌ 자체 서버: 개발 시간 3배
-                </div>
-                <aside class="notes">
-                    1분: ADR-0002 설명 (Q&A 준비)
-                </aside>
-            </section>
+<!-- 9 -->
+<section>
+    <h2>🔐 로그인</h2>
+    <p>이름 기반 인증 + 상태관리 Provider</p>
+</section>
 
-            <!-- Slide 15: ADR-0003 -->
-            <section>
-                <h2>🔄 ADR-0003: Layered Architecture</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 각 계층 독립적 테스트<br>
-                    ✅ 코드 재사용성 높음<br>
-                    ✅ 유지보수 용이
-                </div>
-                <h4 style="color: #51cf66; margin-top: 30px;">계층별 책임</h4>
-                <div style="font-size: 0.95em; line-height: 1.8; margin-left: 20px;">
-                    • Presentation: UI 표시<br>
-                    • Application: 상태 관리<br>
-                    • Domain: 비즈니스 로직<br>
-                    • Data: API/DB 접근
-                </div>
-                <aside class="notes">
-                    1분: ADR-0003 설명 및 아키텍처 상세 (Q&A 준비)
-                </aside>
-            </section>
+<!-- 10 -->
+<section>
+    <h2>🏠 홈 & 검색</h2>
+    <p>카페 리스트 + 실시간 검색</p>
+</section>
 
-            <!-- Slide 16: 개발 환경 설정 -->
-            <section>
-                <h2>💻 개발 환경 설정</h2>
-                <h4 style="color: #ffd93d; margin-top: 30px;">필수 설치</h4>
-                <pre style="font-size: 0.65em;"><code>flutter --version          # Flutter 3.35.3
-flutter pub get            # 의존성 설치
-flutter run               # 앱 실행</code></pre>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">구성 요소</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    • Android Studio + SDK<br>
-                    • Dart SDK<br>
-                    • Provider 패키지<br>
-                    • Firebase 프로젝트
-                </div>
-                <aside class="notes">
-                    30초: 개발 환경 설정 (Q&A 준비)
-                </aside>
-            </section>
+<!-- 11 -->
+<section>
+    <h2>📅 예약</h2>
+    <p>DatePicker + 시간 + 인원 선택</p>
+</section>
 
-            <!-- Slide 17: 시행착오 & 학습 -->
-            <section>
-                <h2>🛠️ 시행착오 & 학습</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">1️⃣ Provider 상태관리 설계</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.7;">
-                    🔴 문제: 과도한 상태 구조 → 리빌드 과다<br>
-                    🟢 해결: ChangeNotifier 분리 + 정확한 notifyListeners()<br>
-                    💡 학습: 상태 설계의 중요성
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">2️⃣ 더미 데이터로 전체 흐름 구현</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.7;">
-                    🔴 문제: Firebase 실시간 동기화 복잡도<br>
-                    🟢 해결: 더미 데이터로 UI/로직 먼저 구현<br>
-                    💡 성과: 개발 속도 50% 향상
-                </div>
-                <aside class="notes">
-                    2분: 개발자 기본소양 - 시행착오 사례
-                </aside>
-            </section>
+<!-- 12 -->
+<section>
+    <h2>⭐ 리뷰</h2>
+    <p>별점 + 텍스트 리뷰 시스템</p>
+</section>
 
-            <!-- Slide 18: 테스트 & 품질 -->
-            <section>
-                <h2>🧪 테스트 & 품질 관리</h2>
-                <h4 style="color: #4ecdc4; margin-top: 20px;">단위 테스트</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 로그인 유효성 검사<br>
-                    ✅ 검색 필터링 로직<br>
-                    ✅ 예약 상태 관리
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">통합 테스트</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 로그인 → 검색 → 예약 시나리오<br>
-                    ✅ 리뷰 작성 → 조회 흐름
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 20px;">코드 품질</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 4계층 아키텍처 준수<br>
-                    ✅ 함수 단위 책임 분리
-                </div>
-                <aside class="notes">
-                    1분: 테스트 및 코드 품질 설명
-                </aside>
-            </section>
+<!-- 13 -->
+<section>
+    <h2>🎯 ADR</h2>
+    <p>Flutter / Firebase / Layered Architecture</p>
+</section>
 
-            <!-- Slide 19: 빌드 & 배포 -->
-            <section>
-                <h2>📦 빌드 & 배포</h2>
-                <h4 style="color: #ffd93d; margin-top: 30px;">빌드 과정</h4>
-                <pre style="font-size: 0.65em;"><code># APK (Android)
-flutter build apk --release
+<!-- 14 -->
+<section>
+    <h2>🧪 테스트</h2>
+    <p>단위 + 통합 테스트 진행</p>
+</section>
 
-# iOS
-flutter build ios --release</code></pre>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">배포 계획</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 로컬 빌드 완료<br>
-                    📋 GitHub Releases에 APK 업로드<br>
-                    📋 TestFlight 등록 (향후)
-                </div>
-                <aside class="notes">
-                    1분: 빌드 & 배포 설명 (Q&A 준비)
-                </aside>
-            </section>
+<!-- 15 -->
+<section>
+    <h2>📦 빌드</h2>
+    <p>flutter build apk / ios</p>
+</section>
 
-            <!-- Slide 20: 향후 계획 -->
-            <section>
-                <h2>🚀 향후 계획</h2>
-                <h4 style="color: #4ecdc4;">Short-term (1개월)</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.8;">
-                    • Should 기능 추가 (찜하기)<br>
-                    • 성능 최적화 (캐싱)<br>
-                    • 테스트 커버리지 확대
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">Long-term (3개월)</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.8;">
-                    • Google Play / App Store 배포<br>
-                    • 백엔드 확장 (결제)<br>
-                    • 사용자 피드백 반영
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 20px;">비전</h4>
-                <div style="font-size: 1.1em; margin-left: 20px; font-weight: bold;">
-                    🎯 대한민국 No.1 카페 예약 앱
-                </div>
-                <aside class="notes">
-                    1분: 향후 계획 및 비전 제시
-                </aside>
-            </section>
+<!-- 16 -->
+<section>
+    <h2>🚀 향후 계획</h2>
+    <p>결제 / 찜 / 캐싱 / 배포</p>
+</section>
 
-            <!-- Slide 21: Q&A -->
-            <section>
-                <h1>🙏 감사합니다!</h1>
-                <h3 style="color: #4ecdc4; margin-top: 60px;"></h3>
-                <div style="margin-top: 50px; font-size: 1.05em; line-height: 2.5;">
-                </div>
-                <aside class="notes">
-                    마무리: 발표 종료
-                </aside>
-            </section>
+<!-- 17 -->
+<section>
+    <h1>🙏 감사합니다</h1>
+</section>
 
-        </div>
-    </div>
+</div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-    <script>
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true,
-            transition: 'slide',
-            width: 960,
-            height: 700
-        });
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
+
+<script>
+Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+
+    // 🔥 핵심: 16:9 비율
+    width: 1280,
+    height: 720
+});
+</script>
+
 </body>
 </html>
