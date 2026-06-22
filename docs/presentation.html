@@ -16,47 +16,53 @@
         .coffee { color: #d4a574; }
         .section-title { color: #4ecdc4; font-size: 1.2em; }
         
-        /* 앱 스크린샷 스타일 */
-        .app-screenshot {
+        /* 앱 스크린샷 스타일 개선 */
+        .app-screenshot-container {
             display: flex;
-            gap: 20px;
             justify-content: center;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .screenshot-wrapper {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-top: 30px;
         }
         .screenshot {
-            width: 200px;
-            height: 400px;
-            border: 3px solid #51cf66;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 0.8em;
-            text-align: center;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.3);
+            width: 170px;
+            height: 350px;
+            border: 4px solid #333;
+            border-radius: 25px;
+            background: #1a1a2e;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             position: relative;
+            overflow: hidden;
         }
+        /* 스마트폰 상단 노치 디테일 */
         .screenshot::after {
             content: '';
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 25px;
+            width: 90px;
+            height: 15px;
             background: #000;
-            border-radius: 0 0 20px 20px;
+            border-radius: 0 0 10px 10px;
             z-index: 10;
         }
+        .screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
         .screenshot-label {
-            margin-top: 15px;
+            margin-top: 10px;
             font-weight: bold;
             color: #ffd93d;
-            font-size: 0.9em;
+            font-size: 0.75em;
         }
 
         /* 아키텍처 계층 스타일 */
@@ -96,14 +102,6 @@
             font-size: 0.85em;
             color: #ccc;
             font-weight: normal;
-        }
-
-        /* 아키텍처 다이어그램 */
-        .arch-diagram {
-            margin-top: 30px;
-            text-align: left;
-            font-size: 0.95em;
-            line-height: 1.8;
         }
     </style>
 </head>
@@ -218,403 +216,53 @@
                 </aside>
             </section>
 
-            <!-- Slide 7: 아키텍처 개요 (개선됨) -->
+            <!-- Slide 7: 구현 화면 (스크린샷 연동) -->
             <section>
-                <h2>🏗️ 아키텍처 - 4계층 Layered Architecture</h2>
-                
-                <div class="architecture-layer">
-                    <div class="layer layer-presentation">
-                        <div>
-                            <div>🎨 Presentation Layer (UI)</div>
-                            <div class="layer-desc">Screens, Widgets, State 표시</div>
-                        </div>
-                    </div>
-                    
-                    <div class="layer layer-application">
-                        <div>
-                            <div>⚙️ Application Layer (ViewModel)</div>
-                            <div class="layer-desc">Provider, State Management</div>
-                        </div>
-                    </div>
-                    
-                    <div class="layer layer-domain">
-                        <div>
-                            <div>🧠 Domain Layer (Business Logic)</div>
-                            <div class="layer-desc">Use Cases, Entities, Rules</div>
-                        </div>
-                    </div>
-                    
-                    <div class="layer layer-data">
-                        <div>
-                            <div>💾 Data Layer (Repository)</div>
-                            <div class="layer-desc">Firebase, Local Storage, APIs</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="arch-diagram" style="margin-top: 40px; text-align: center;">
-                    <p style="color: #ffd93d; font-weight: bold;">의존성 흐름</p>
-                    <p style="font-size: 1em;">UI → ViewModel → Business Logic → Data Access</p>
-                    <p style="color: #51cf66; font-size: 0.95em; margin-top: 10px;">✅ 각 계층 독립적 테스트 가능</p>
-                    <p style="color: #51cf66; font-size: 0.95em;">✅ 코드 재사용성 및 유지보수성 향상</p>
-                </div>
-
-                <aside class="notes">
-                    1분: 아키텍처 설명 - 각 계층의 책임
-                </aside>
-            </section>
-
-            <!-- Slide 8: 구현 결과 -->
-            <section>
-                <h2>📱 구현 결과</h2>
-                <h3 style="color: #51cf66;">5개 탭 + 완벽한 사용자 흐름</h3>
-                <ol style="margin-top: 40px; font-size: 1.1em; line-height: 2;">
-                    <li><strong>로그인</strong> - 이름 입력 인증</li>
-                    <li><strong>홈</strong> - 인기 카페 + 최근 리뷰</li>
-                    <li><strong>검색</strong> - 실시간 검색 + 5개 카테고리</li>
-                    <li><strong>예약</strong> - DatePicker + 시간/인원 선택</li>
-                    <li><strong>리뷰</strong> - 별점 선택 + 텍스트 작성</li>
-                </ol>
-                <aside class="notes">
-                    1분: 구현된 전체 기능 요약
-                </aside>
-            </section>
-
-            <!-- Slide 9: 앱 실행 화면 -->
-            <section>
-                <h2>📱 앱 실행 화면</h2>
-                <div class="app-screenshot">
-                    <div style="text-align: center;">
+                <h2>📱 주요 구현 화면</h2>
+                <div class="app-screenshot-container">
+                    <div class="screenshot-wrapper">
                         <div class="screenshot">
-                            <div style="padding-top: 50px;">
-                                🔐<br><br>
-                                <strong>로그인</strong><br>
-                                <span style="font-size: 0.75em; color: #aaa;">이름 입력</span>
-                            </div>
+                            <img src="images/login.png" alt="로그인">
                         </div>
                         <div class="screenshot-label">로그인</div>
                     </div>
-                    
-                    <div style="text-align: center;">
+                    <div class="screenshot-wrapper">
                         <div class="screenshot">
-                            <div style="padding-top: 50px;">
-                                🏠<br><br>
-                                <strong>홈</strong><br>
-                                <span style="font-size: 0.75em; color: #aaa;">인기카페 & 리뷰</span>
-                            </div>
+                            <img src="images/home.png" alt="홈화면">
                         </div>
-                        <div class="screenshot-label">홈 화면</div>
+                        <div class="screenshot-label">홈화면</div>
                     </div>
-                    
-                    <div style="text-align: center;">
+                    <div class="screenshot-wrapper">
                         <div class="screenshot">
-                            <div style="padding-top: 50px;">
-                                🔍<br><br>
-                                <strong>검색</strong><br>
-                                <span style="font-size: 0.75em; color: #aaa;">실시간 + 필터</span>
-                            </div>
+                            <img src="images/search.png" alt="검색">
                         </div>
-                        <div class="screenshot-label">검색</div>
+                        <div class="screenshot-label">카페검색</div>
                     </div>
-
-                    <div style="text-align: center;">
+                    <div class="screenshot-wrapper">
                         <div class="screenshot">
-                            <div style="padding-top: 50px;">
-                                📅<br><br>
-                                <strong>예약</strong><br>
-                                <span style="font-size: 0.75em; color: #aaa;">날짜 & 시간</span>
-                            </div>
+                            <img src="images/reservation.png" alt="예약">
                         </div>
-                        <div class="screenshot-label">예약 관리</div>
+                        <div class="screenshot-label">실시간예약</div>
                     </div>
-
-                    <div style="text-align: center;">
+                    <div class="screenshot-wrapper">
                         <div class="screenshot">
-                            <div style="padding-top: 50px;">
-                                ⭐<br><br>
-                                <strong>리뷰</strong><br>
-                                <span style="font-size: 0.75em; color: #aaa;">별점 & 평가</span>
-                            </div>
+                            <img src="images/review.png" alt="리뷰">
                         </div>
-                        <div class="screenshot-label">리뷰 작성</div>
+                        <div class="screenshot-label">리뷰작성</div>
                     </div>
                 </div>
                 <aside class="notes">
-                    1분: 앱 실행 화면 설명
+                    2분: 핵심 UI 구현 화면 시연 및 설명
                 </aside>
             </section>
 
-            <!-- Slide 10: 기능 1 - 로그인 -->
+            <!-- Slide 8: 아키텍처 개요 -->
             <section>
-                <h2>🔐 기능 1: 로그인</h2>
-                <div style="text-align: left; margin-top: 40px; font-size: 1.1em; line-height: 2;">
-                    <div><span class="success">✅</span> 이름 입력 (필수)</div>
-                    <div><span class="success">✅</span> 비밀번호 UI (토글)</div>
-                    <div><span class="success">✅</span> 유효성 검사 (스낵바)</div>
-                    <div><span class="success">✅</span> 로그아웃 (홈 화면 우상단)</div>
-                </div>
-                <pre style="margin-top: 40px; font-size: 0.7em;"><code>// Provider로 로그인 상태 관리
-appState.login(username)
-appState.logout()</code></pre>
-                <aside class="notes">
-                    30초: 로그인 기능 상세 설명
-                </aside>
-            </section>
-
-            <!-- Slide 11: 기능 2 - 홈 & 검색 -->
-            <section>
-                <h2>🏠 기능 2: 홈 & 검색</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #ffd93d;">홈 화면</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 인기 카페 가로 스크롤<br>
-                        • 최근 리뷰 최대 3개<br>
-                        • 탭 → 카페 상세화면
+                <h2>🏗️ 아키텍처 - 4계층 Layered Architecture</h2>
+                <div class="architecture-layer">
+                    <div class="layer layer-presentation">
+                        <span>Presentation Layer</span>
+                        <span class="layer-desc">UI, Widgets, ViewModels (화면 진입점)</span>
                     </div>
-                    <h4 style="color: #ffd93d; margin-top: 20px;">검색 화면</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 실시간 검색<br>
-                        • 5개 카테고리 필터<br>
-                        • 결과 수 표시
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 홈과 검색 기능 상세 설명
-                </aside>
-            </section>
-
-            <!-- Slide 12: 기능 3 - 예약 -->
-            <section>
-                <h2>📅 기능 3: 예약 시스템</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #4ecdc4;">예약 선택</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • DatePicker (오늘~30일)<br>
-                        • 시간 드롭다운 (10:00~19:00)<br>
-                        • 인원 +/- 버튼 (1~10명)
-                    </div>
-                    <h4 style="color: #4ecdc4; margin-top: 20px;">예약 관리</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 예약 목록 카드<br>
-                        • 상태 배지 (예약완료)<br>
-                        • 예약 취소 기능
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 예약 시스템 상세 설명
-                </aside>
-            </section>
-
-            <!-- Slide 13: 기능 4 - 리뷰 -->
-            <section>
-                <h2>⭐ 기능 4: 리뷰</h2>
-                <div style="text-align: left; margin-top: 30px;">
-                    <h4 style="color: #51cf66;">리뷰 작성</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 카페 선택 드롭다운<br>
-                        • 별점 선택 (1~5)<br>
-                        • 텍스트 입력 (최대 300자)
-                    </div>
-                    <h4 style="color: #51cf66; margin-top: 20px;">리뷰 조회</h4>
-                    <div style="font-size: 1em; line-height: 1.8; margin-left: 20px;">
-                        • 전체 리뷰 목록<br>
-                        • 카페별 평점<br>
-                        • 작성자 및 날짜
-                    </div>
-                </div>
-                <aside class="notes">
-                    1분: 리뷰 기능 상세 설명
-                </aside>
-            </section>
-
-            <!-- Slide 14: ADR-0001 -->
-            <section>
-                <h2>🎯 ADR-0001: Flutter 선택</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ iOS + Android 동시 개발<br>
-                    ✅ 단일 코드베이스 (95% 공유)<br>
-                    ✅ 빠른 프로토타입 (Hot Reload)
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 30px;">대안 검토</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ❌ React Native: 성능 낮음<br>
-                    ❌ 네이티브: 6주 내 불가능
-                </div>
-                <aside class="notes">
-                    1분: ADR-0001 설명 (Q&A 준비)
-                </aside>
-            </section>
-
-            <!-- Slide 15: ADR-0002 -->
-            <section>
-                <h2>☁️ ADR-0002: Firebase 선택</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 인증 즉시 구현 가능<br>
-                    ✅ Firestore 실시간 동기화<br>
-                    ✅ 무료 범위 내 충분
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 30px;">대안 검토</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ❌ AWS: 설정 복잡<br>
-                    ❌ 자체 서버: 개발 시간 3배
-                </div>
-                <aside class="notes">
-                    1분: ADR-0002 설명 (Q&A 준비)
-                </aside>
-            </section>
-
-            <!-- Slide 16: ADR-0003 (개선됨) -->
-            <section>
-                <h2>🔄 ADR-0003: Layered Architecture</h2>
-                <h4 style="color: #4ecdc4; margin-top: 20px;">선택 이유</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 각 계층 독립적 테스트<br>
-                    ✅ 코드 재사용성 높음<br>
-                    ✅ 유지보수 용이
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">계층별 책임</h4>
-                <div style="font-size: 0.95em; line-height: 1.8; margin-left: 20px;">
-                    <span class="highlight">Presentation:</span> UI 렌더링 & 사용자 상호작용<br>
-                    <span class="highlight">Application:</span> Provider를 통한 상태 관리<br>
-                    <span class="highlight">Domain:</span> 검색, 예약, 리뷰 비즈니스 로직<br>
-                    <span class="highlight">Data:</span> Firebase API & Local DB 접근
-                </div>
-                <aside class="notes">
-                    1분: ADR-0003 설명 및 아키텍처 상세 (Q&A 준비)
-                </aside>
-            </section>
-
-            <!-- Slide 17: 개발 환경 설정 -->
-            <section>
-                <h2>💻 개발 환경 설정</h2>
-                <h4 style="color: #ffd93d; margin-top: 30px;">필수 설치</h4>
-                <pre style="font-size: 0.65em;"><code>flutter --version          # Flutter 3.35.3
-flutter pub get            # 의존성 설치
-flutter run               # 앱 실행</code></pre>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">구성 요소</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    • Android Studio + SDK<br>
-                    • Dart SDK<br>
-                    • Provider 패키지<br>
-                    • Firebase 프로젝트
-                </div>
-                <aside class="notes">
-                    30초: 개발 환경 설정 (Q&A 준비)
-                </aside>
-            </section>
-
-            <!-- Slide 18: 시행착오 & 학습 -->
-            <section>
-                <h2>🛠️ 시행착오 & 학습</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">1️⃣ Provider 상태관리 설계</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.7;">
-                    🔴 문제: 과도한 상태 구조 → 리빌드 과다<br>
-                    🟢 해결: ChangeNotifier 분리 + 정확한 notifyListeners()<br>
-                    💡 학습: 상태 설계의 중요성
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">2️⃣ 더미 데이터로 전체 흐름 구현</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.7;">
-                    🔴 문제: Firebase 실시간 동기화 복잡도<br>
-                    🟢 해결: 더미 데이터로 UI/로직 먼저 구현<br>
-                    💡 성과: 개발 속도 50% 향상
-                </div>
-                <aside class="notes">
-                    2분: 개발자 기본소양 - 시행착오 사례
-                </aside>
-            </section>
-
-            <!-- Slide 19: 테스트 & 품질 -->
-            <section>
-                <h2>🧪 테스트 & 품질 관리</h2>
-                <h4 style="color: #4ecdc4; margin-top: 20px;">단위 테스트</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 로그인 유효성 검사<br>
-                    ✅ 검색 필터링 로직<br>
-                    ✅ 예약 상태 관리
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">통합 테스트</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 로그인 → 검색 → 예약 시나리오<br>
-                    ✅ 리뷰 작성 → 조회 흐름
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 20px;">코드 품질</h4>
-                <div style="font-size: 0.95em; margin-left: 20px;">
-                    ✅ 4계층 아키텍처 준수<br>
-                    ✅ 함수 단위 책임 분리
-                </div>
-                <aside class="notes">
-                    1분: 테스트 및 코드 품질 설명
-                </aside>
-            </section>
-
-            <!-- Slide 20: 빌드 & 배포 -->
-            <section>
-                <h2>📦 빌드 & 배포</h2>
-                <h4 style="color: #ffd93d; margin-top: 30px;">빌드 과정</h4>
-                <pre style="font-size: 0.65em;"><code># APK (Android)
-flutter build apk --release
-
-# iOS
-flutter build ios --release</code></pre>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">배포 계획</h4>
-                <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
-                    ✅ 로컬 빌드 완료<br>
-                    📋 GitHub Releases에 APK 업로드<br>
-                    📋 TestFlight 등록 (향후)
-                </div>
-                <aside class="notes">
-                    1분: 빌드 & 배포 설명 (Q&A 준비)
-                </aside>
-            </section>
-
-            <!-- Slide 21: 향후 계획 -->
-            <section>
-                <h2>🚀 향후 계획</h2>
-                <h4 style="color: #4ecdc4;">Short-term (1개월)</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.8;">
-                    • Should 기능 추가 (찜하기)<br>
-                    • 성능 최적화 (캐싱)<br>
-                    • 테스트 커버리지 확대
-                </div>
-                <h4 style="color: #51cf66; margin-top: 20px;">Long-term (3개월)</h4>
-                <div style="font-size: 0.95em; margin-left: 20px; line-height: 1.8;">
-                    • Google Play / App Store 배포<br>
-                    • 백엔드 확장 (결제)<br>
-                    • 사용자 피드백 반영
-                </div>
-                <h4 style="color: #ffd93d; margin-top: 20px;">비전</h4>
-                <div style="font-size: 1.1em; margin-left: 20px; font-weight: bold;">
-                    🎯 대한민국 No.1 카페 예약 앱
-                </div>
-                <aside class="notes">
-                    1분: 향후 계획 및 비전 제시
-                </aside>
-            </section>
-
-            <!-- Slide 22: Q&A -->
-            <section>
-                <h1>🙏 감사합니다!</h1>
-                <h3 style="color: #4ecdc4; margin-top: 60px;">질문 있으신가요?</h3>
-                <aside class="notes">
-                    마무리: 발표 종료
-                </aside>
-            </section>
-
-        </div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-    <script>
-        Reveal.initialize({
-            hash: true,
-            slideNumber: true,
-            transition: 'slide',
-            width: 1280,
-            height: 720,
-            margin: 0.1
-        });
-    </script>
-</body>
-</html>
+                    <div class="layer layer-application">
+                        <span>Application Layer</span>
