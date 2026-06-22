@@ -9,42 +9,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/theme/black.min.css">
 
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .reveal h1, .reveal h2, .reveal h3 {
-            text-transform: none;
-        }
-
-        .reveal pre {
-            width: 100%;
-            font-size: 0.6em;
-        }
-
-        .reveal table {
-            margin: 20px auto;
-            font-size: 0.8em;
-        }
-
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .reveal h1, .reveal h2, .reveal h3 { text-transform: none; }
+        .reveal pre { width: 100%; font-size: 0.55em; }
+        .reveal table { margin: 20px auto; font-size: 0.8em; }
         .highlight { color: #ff6b6b; font-weight: bold; }
         .success { color: #51cf66; }
         .coffee { color: #d4a574; }
-
-        /* 🔥 발표 안정화 핵심 */
-        .reveal section img,
-        .reveal section video,
-        .reveal section iframe {
-            max-width: 85%;
-            max-height: 500px;
-            margin-top: 20px;
-        }
-
+        .section-title { color: #4ecdc4; font-size: 1.2em; }
+        img { border-radius: 12px; }
     </style>
 </head>
 
 <body>
-
 <div class="reveal">
 <div class="slides">
 
@@ -52,19 +29,19 @@
 <section>
     <h1>🏢 CafeHub</h1>
     <h3>카페 예약 모바일 앱</h3>
-    <p style="color:#ffd93d;">
-        카페 탐색부터 예약까지 한 번에 해결하는 서비스
+    <p style="color:#ffd93d; font-size:1.2em;">
+        가고 싶은 카페를 찾아서 자리를 미리 예약하는 앱
     </p>
 </section>
 
 <!-- 2 -->
 <section>
     <h2>📍 비전</h2>
-    <h3>"카페 경험을 더 빠르고 정확하게"</h3>
+    <h3 style="color:#4ecdc4;">"일상 속 카페 경험을 더 편하게"</h3>
     <ul>
-        <li>직장인 / 학생 / 프리랜서 대상</li>
-        <li>자리 부족 문제 해결</li>
-        <li>예약 중심 서비스</li>
+        <li>👥 직장인 / 학생 / 프리랜서</li>
+        <li>📱 카페 찾기 → 자리 없음 문제</li>
+        <li>✅ 예약으로 해결</li>
     </ul>
 </section>
 
@@ -72,140 +49,154 @@
 <section>
     <h2>❌ 문제 정의</h2>
     <ul>
-        <li>카페 정보 분산</li>
-        <li>자리 없음으로 인한 시간 낭비</li>
-        <li>예약 시스템 부족</li>
+        <li>📱 정보 분산</li>
+        <li>⏰ 자리 찾기 시간 낭비</li>
+        <li>🚫 예약 시스템 부족</li>
     </ul>
 </section>
 
 <!-- 4 -->
 <section>
-    <h2>✅ 해결</h2>
+    <h2>✅ 가치 제안</h2>
     <h3 style="color:#51cf66;">30초 안에 예약 완료</h3>
     <ol>
-        <li>검색</li>
-        <li>예약</li>
-        <li>확인</li>
-        <li>리뷰</li>
+        <li><span class="highlight">검색</span></li>
+        <li><span class="highlight">예약</span></li>
+        <li><span class="highlight">확인</span></li>
+        <li><span class="highlight">리뷰</span></li>
     </ol>
 </section>
 
 <!-- 5 -->
 <section>
-    <h2>📋 WBS</h2>
+    <h2>📋 프로젝트 계획</h2>
     <table>
-        <tr><th>주차</th><th>내용</th></tr>
         <tr><td>10주</td><td>기획</td></tr>
-        <tr><td>11주</td><td>환경설정</td></tr>
+        <tr><td>11주</td><td>환경 설정</td></tr>
         <tr><td>12~13주</td><td>개발</td></tr>
-        <tr><td>14주</td><td>배포</td></tr>
+        <tr><td>14주</td><td>발표</td></tr>
     </table>
 </section>
 
 <!-- 6 -->
 <section>
-    <h2>🛠 기술 스택</h2>
-    <p>Flutter / Firebase / Provider / Google Maps</p>
+    <h2>🛠️ 기술 스택</h2>
+    <p>Flutter / Firebase / Google Maps / Provider</p>
 </section>
 
 <!-- 7 -->
 <section>
-    <h2>🏗 아키텍처</h2>
+    <h2>🏗️ 아키텍처</h2>
 
-<pre>
-UI (Presentation)
-   ↓
-Provider (State)
-   ↓
-Application (Logic)
-   ↓
-Domain (Model)
-   ↓
-Data (Firebase)
-</pre>
+    <!-- 👇 여기 이미지 넣으면 됨 -->
+    <img src="images/architecture.png" style="width:70%;">
 
 </section>
 
 <!-- 8 -->
 <section>
-    <h2>📱 데모 영상</h2>
-
-    <!-- 🔥 여기 영상 넣으면 됨 -->
-    <video controls>
-        <source src="videos/demo.mp4" type="video/mp4">
-    </video>
-
-    <!-- 또는 이미지 -->
-    <!-- <img src="images/demo.png"> -->
+    <h2>📱 구현 결과</h2>
+    <ul>
+        <li>로그인</li>
+        <li>홈</li>
+        <li>검색</li>
+        <li>예약</li>
+        <li>리뷰</li>
+    </ul>
 </section>
 
 <!-- 9 -->
 <section>
     <h2>🔐 로그인</h2>
-    <p>이름 기반 인증 + 상태관리 Provider</p>
+
+    <!-- 👇 앱 화면 이미지 -->
+    <img src="images/login.png" style="width:35%;">
+
 </section>
 
 <!-- 10 -->
 <section>
-    <h2>🏠 홈 & 검색</h2>
-    <p>카페 리스트 + 실시간 검색</p>
+    <h2>🏠 홈 화면</h2>
+    <img src="images/home.png" style="width:35%;">
 </section>
 
 <!-- 11 -->
 <section>
-    <h2>📅 예약</h2>
-    <p>DatePicker + 시간 + 인원 선택</p>
+    <h2>🔍 검색</h2>
+    <img src="images/search.png" style="width:35%;">
 </section>
 
 <!-- 12 -->
 <section>
-    <h2>⭐ 리뷰</h2>
-    <p>별점 + 텍스트 리뷰 시스템</p>
+    <h2>📅 예약</h2>
+    <img src="images/reservation.png" style="width:35%;">
 </section>
 
 <!-- 13 -->
 <section>
-    <h2>🎯 ADR</h2>
-    <p>Flutter / Firebase / Layered Architecture</p>
+    <h2>⭐ 리뷰</h2>
+    <img src="images/review.png" style="width:35%;">
 </section>
 
 <!-- 14 -->
 <section>
-    <h2>🧪 테스트</h2>
-    <p>단위 + 통합 테스트 진행</p>
+    <h2>🎯 Flutter 선택</h2>
+    <p>iOS + Android 동시 개발 가능</p>
 </section>
 
 <!-- 15 -->
 <section>
-    <h2>📦 빌드</h2>
-    <p>flutter build apk / ios</p>
+    <h2>☁️ Firebase 선택</h2>
+    <p>빠른 인증 + 실시간 DB</p>
 </section>
 
 <!-- 16 -->
 <section>
-    <h2>🚀 향후 계획</h2>
-    <p>결제 / 찜 / 캐싱 / 배포</p>
+    <h2>🔄 아키텍처 설계</h2>
+    <p>4계층 구조 (UI / App / Domain / Data)</p>
 </section>
 
 <!-- 17 -->
 <section>
+    <h2>🛠️ 시행착오</h2>
+    <p>Provider 구조 문제 → 분리로 해결</p>
+</section>
+
+<!-- 18 -->
+<section>
+    <h2>🧪 테스트</h2>
+    <p>로그인 / 검색 / 예약 테스트 완료</p>
+</section>
+
+<!-- 19 -->
+<section>
+    <h2>📦 빌드</h2>
+    <p>Flutter APK 빌드 완료</p>
+</section>
+
+<!-- 20 -->
+<section>
+    <h2>🚀 향후 계획</h2>
+    <p>찜하기 / 결제 / 앱스토어 출시</p>
+</section>
+
+<!-- 21 -->
+<section>
     <h1>🙏 감사합니다</h1>
+    <h3>이상입니다. 감사합니다.</h3>
 </section>
 
 </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.5.0/reveal.min.js"></script>
-
 <script>
 Reveal.initialize({
     hash: true,
     slideNumber: true,
     transition: 'slide',
-
-    // 🔥 핵심: 16:9 비율
-    width: 1280,
-    height: 720
+    width: 960,
+    height: 700
 });
 </script>
 
