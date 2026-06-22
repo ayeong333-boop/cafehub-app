@@ -15,6 +15,96 @@
         .success { color: #51cf66; }
         .coffee { color: #d4a574; }
         .section-title { color: #4ecdc4; font-size: 1.2em; }
+        
+        /* 앱 스크린샷 스타일 */
+        .app-screenshot {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .screenshot {
+            width: 200px;
+            height: 400px;
+            border: 3px solid #51cf66;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 0.8em;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(81, 207, 102, 0.3);
+            position: relative;
+        }
+        .screenshot::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+        .screenshot-label {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #ffd93d;
+            font-size: 0.9em;
+        }
+
+        /* 아키텍처 계층 스타일 */
+        .architecture-layer {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .layer {
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1em;
+            border-left: 4px solid #4ecdc4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .layer-presentation {
+            background: rgba(255, 107, 107, 0.2);
+            border-left-color: #ff6b6b;
+        }
+        .layer-application {
+            background: rgba(212, 165, 116, 0.2);
+            border-left-color: #d4a574;
+        }
+        .layer-domain {
+            background: rgba(81, 207, 102, 0.2);
+            border-left-color: #51cf66;
+        }
+        .layer-data {
+            background: rgba(78, 205, 196, 0.2);
+            border-left-color: #4ecdc4;
+        }
+        .layer-desc {
+            font-size: 0.85em;
+            color: #ccc;
+            font-weight: normal;
+        }
+
+        /* 아키텍처 다이어그램 */
+        .arch-diagram {
+            margin-top: 30px;
+            text-align: left;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
     </style>
 </head>
 <body>
@@ -128,19 +218,47 @@
                 </aside>
             </section>
 
-            <!-- Slide 7: 아키텍처 개요 -->
+            <!-- Slide 7: 아키텍처 개요 (개선됨) -->
             <section>
-                <h2>🏗️ 아키텍처</h2>
-                <h3 style="color: #4ecdc4;">4계층 Layered Architecture</h3>
-                <pre style="margin-top: 40px; background: #0f3460; padding: 20px; border-radius: 8px;"><code>┌─────────────────────────────────┐
-│   Presentation (UI)             │
-├─────────────────────────────────┤
-│   Application (ViewModel)       │
-├─────────────────────────────────┤
-│   Domain (Business Logic)       │
-├─────────────────────────────────┤
-│   Data (Repository)             │
-└─────────────────────────────────┘</code></pre>
+                <h2>🏗️ 아키텍처 - 4계층 Layered Architecture</h2>
+                
+                <div class="architecture-layer">
+                    <div class="layer layer-presentation">
+                        <div>
+                            <div>🎨 Presentation Layer (UI)</div>
+                            <div class="layer-desc">Screens, Widgets, State 표시</div>
+                        </div>
+                    </div>
+                    
+                    <div class="layer layer-application">
+                        <div>
+                            <div>⚙️ Application Layer (ViewModel)</div>
+                            <div class="layer-desc">Provider, State Management</div>
+                        </div>
+                    </div>
+                    
+                    <div class="layer layer-domain">
+                        <div>
+                            <div>🧠 Domain Layer (Business Logic)</div>
+                            <div class="layer-desc">Use Cases, Entities, Rules</div>
+                        </div>
+                    </div>
+                    
+                    <div class="layer layer-data">
+                        <div>
+                            <div>💾 Data Layer (Repository)</div>
+                            <div class="layer-desc">Firebase, Local Storage, APIs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-diagram" style="margin-top: 40px; text-align: center;">
+                    <p style="color: #ffd93d; font-weight: bold;">의존성 흐름</p>
+                    <p style="font-size: 1em;">UI → ViewModel → Business Logic → Data Access</p>
+                    <p style="color: #51cf66; font-size: 0.95em; margin-top: 10px;">✅ 각 계층 독립적 테스트 가능</p>
+                    <p style="color: #51cf66; font-size: 0.95em;">✅ 코드 재사용성 및 유지보수성 향상</p>
+                </div>
+
                 <aside class="notes">
                     1분: 아키텍처 설명 - 각 계층의 책임
                 </aside>
@@ -162,7 +280,71 @@
                 </aside>
             </section>
 
-            <!-- Slide 9: 기능 1 - 로그인 -->
+            <!-- Slide 9: 앱 실행 화면 -->
+            <section>
+                <h2>📱 앱 실행 화면</h2>
+                <div class="app-screenshot">
+                    <div style="text-align: center;">
+                        <div class="screenshot">
+                            <div style="padding-top: 50px;">
+                                🔐<br><br>
+                                <strong>로그인</strong><br>
+                                <span style="font-size: 0.75em; color: #aaa;">이름 입력</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">로그인</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="screenshot">
+                            <div style="padding-top: 50px;">
+                                🏠<br><br>
+                                <strong>홈</strong><br>
+                                <span style="font-size: 0.75em; color: #aaa;">인기카페 & 리뷰</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">홈 화면</div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div class="screenshot">
+                            <div style="padding-top: 50px;">
+                                🔍<br><br>
+                                <strong>검색</strong><br>
+                                <span style="font-size: 0.75em; color: #aaa;">실시간 + 필터</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">검색</div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <div class="screenshot">
+                            <div style="padding-top: 50px;">
+                                📅<br><br>
+                                <strong>예약</strong><br>
+                                <span style="font-size: 0.75em; color: #aaa;">날짜 & 시간</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">예약 관리</div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <div class="screenshot">
+                            <div style="padding-top: 50px;">
+                                ⭐<br><br>
+                                <strong>리뷰</strong><br>
+                                <span style="font-size: 0.75em; color: #aaa;">별점 & 평가</span>
+                            </div>
+                        </div>
+                        <div class="screenshot-label">리뷰 작성</div>
+                    </div>
+                </div>
+                <aside class="notes">
+                    1분: 앱 실행 화면 설명
+                </aside>
+            </section>
+
+            <!-- Slide 10: 기능 1 - 로그인 -->
             <section>
                 <h2>🔐 기능 1: 로그인</h2>
                 <div style="text-align: left; margin-top: 40px; font-size: 1.1em; line-height: 2;">
@@ -179,7 +361,7 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 10: 기능 2 - 홈 & 검색 -->
+            <!-- Slide 11: 기능 2 - 홈 & 검색 -->
             <section>
                 <h2>🏠 기능 2: 홈 & 검색</h2>
                 <div style="text-align: left; margin-top: 30px;">
@@ -201,7 +383,7 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 11: 기능 3 - 예약 -->
+            <!-- Slide 12: 기능 3 - 예약 -->
             <section>
                 <h2>📅 기능 3: 예약 시스템</h2>
                 <div style="text-align: left; margin-top: 30px;">
@@ -223,7 +405,7 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 12: 기능 4 - 리뷰 -->
+            <!-- Slide 13: 기능 4 - 리뷰 -->
             <section>
                 <h2>⭐ 기능 4: 리뷰</h2>
                 <div style="text-align: left; margin-top: 30px;">
@@ -245,7 +427,7 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 13: ADR-0001 -->
+            <!-- Slide 14: ADR-0001 -->
             <section>
                 <h2>🎯 ADR-0001: Flutter 선택</h2>
                 <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
@@ -264,7 +446,7 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 14: ADR-0002 -->
+            <!-- Slide 15: ADR-0002 -->
             <section>
                 <h2>☁️ ADR-0002: Firebase 선택</h2>
                 <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
@@ -283,28 +465,28 @@ appState.logout()</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 15: ADR-0003 -->
+            <!-- Slide 16: ADR-0003 (개선됨) -->
             <section>
                 <h2>🔄 ADR-0003: Layered Architecture</h2>
-                <h4 style="color: #4ecdc4; margin-top: 30px;">선택 이유</h4>
+                <h4 style="color: #4ecdc4; margin-top: 20px;">선택 이유</h4>
                 <div style="font-size: 1.05em; line-height: 2; margin-left: 20px;">
                     ✅ 각 계층 독립적 테스트<br>
                     ✅ 코드 재사용성 높음<br>
                     ✅ 유지보수 용이
                 </div>
-                <h4 style="color: #51cf66; margin-top: 30px;">계층별 책임</h4>
+                <h4 style="color: #51cf66; margin-top: 20px;">계층별 책임</h4>
                 <div style="font-size: 0.95em; line-height: 1.8; margin-left: 20px;">
-                    • Presentation: UI 표시<br>
-                    • Application: 상태 관리<br>
-                    • Domain: 비즈니스 로직<br>
-                    • Data: API/DB 접근
+                    <span class="highlight">Presentation:</span> UI 렌더링 & 사용자 상호작용<br>
+                    <span class="highlight">Application:</span> Provider를 통한 상태 관리<br>
+                    <span class="highlight">Domain:</span> 검색, 예약, 리뷰 비즈니스 로직<br>
+                    <span class="highlight">Data:</span> Firebase API & Local DB 접근
                 </div>
                 <aside class="notes">
                     1분: ADR-0003 설명 및 아키텍처 상세 (Q&A 준비)
                 </aside>
             </section>
 
-            <!-- Slide 16: 개발 환경 설정 -->
+            <!-- Slide 17: 개발 환경 설정 -->
             <section>
                 <h2>💻 개발 환경 설정</h2>
                 <h4 style="color: #ffd93d; margin-top: 30px;">필수 설치</h4>
@@ -323,7 +505,7 @@ flutter run               # 앱 실행</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 17: 시행착오 & 학습 -->
+            <!-- Slide 18: 시행착오 & 학습 -->
             <section>
                 <h2>🛠️ 시행착오 & 학습</h2>
                 <h4 style="color: #4ecdc4; margin-top: 30px;">1️⃣ Provider 상태관리 설계</h4>
@@ -343,7 +525,7 @@ flutter run               # 앱 실행</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 18: 테스트 & 품질 -->
+            <!-- Slide 19: 테스트 & 품질 -->
             <section>
                 <h2>🧪 테스트 & 품질 관리</h2>
                 <h4 style="color: #4ecdc4; margin-top: 20px;">단위 테스트</h4>
@@ -367,7 +549,7 @@ flutter run               # 앱 실행</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 19: 빌드 & 배포 -->
+            <!-- Slide 20: 빌드 & 배포 -->
             <section>
                 <h2>📦 빌드 & 배포</h2>
                 <h4 style="color: #ffd93d; margin-top: 30px;">빌드 과정</h4>
@@ -387,7 +569,7 @@ flutter build ios --release</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 20: 향후 계획 -->
+            <!-- Slide 21: 향후 계획 -->
             <section>
                 <h2>🚀 향후 계획</h2>
                 <h4 style="color: #4ecdc4;">Short-term (1개월)</h4>
@@ -411,12 +593,10 @@ flutter build ios --release</code></pre>
                 </aside>
             </section>
 
-            <!-- Slide 21: Q&A -->
+            <!-- Slide 22: Q&A -->
             <section>
                 <h1>🙏 감사합니다!</h1>
-                <h3 style="color: #4ecdc4; margin-top: 60px;"></h3>
-                <div style="margin-top: 50px; font-size: 1.05em; line-height: 2.5;">
-                </div>
+                <h3 style="color: #4ecdc4; margin-top: 60px;">질문 있으신가요?</h3>
                 <aside class="notes">
                     마무리: 발표 종료
                 </aside>
@@ -431,8 +611,9 @@ flutter build ios --release</code></pre>
             hash: true,
             slideNumber: true,
             transition: 'slide',
-            width: 960,
-            height: 700
+            width: 1280,
+            height: 720,
+            margin: 0.1
         });
     </script>
 </body>
